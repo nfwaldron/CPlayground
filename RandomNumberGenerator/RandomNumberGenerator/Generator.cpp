@@ -19,9 +19,9 @@ Generator::Generator()
     sequence = time(NULL);
     cout << "sequence = " << hex << sequence << dec << endl;
 }
-    
-    // This random number generator takes an integer as a parameter, and using a mask and a left shift
-    // register, generates random numbers.
+
+    // This random number generator takes an integer as an arguement. Using a mask to tap the 1st and 4th bits,
+    // we use the left shift feedback register method to generate random numbers.
     
 unsigned long int Generator::random(int bitCount)
 {
