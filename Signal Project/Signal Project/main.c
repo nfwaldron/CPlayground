@@ -1,8 +1,6 @@
 ﻿/* Nathan Waldron
 
- * Project 2: Signal Code
-
- * May 1, 2014
+ *  Signal Code
 
  * This program does the following:
 
