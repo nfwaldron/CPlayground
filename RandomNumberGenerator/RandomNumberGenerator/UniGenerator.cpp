@@ -1,4 +1,3 @@
-//
 //  UniGenerator.cpp
 //  RandomNumberGenerator
 //
@@ -19,7 +18,6 @@ UniGenerator::UniGenerator()
 
 void UniGenerator::getRandomNumbers()
 {
-    
 
     const int BITS = 4; // Number of bits
     const int RANGE = 16; // Number of elements in the array
@@ -33,8 +31,7 @@ void UniGenerator::getRandomNumbers()
     {
         // The .random method creates random numbers using the left shift feedback register method.
         // The random number that is generated is stored in the variable "result".
-        // The arguement for the method .random is BITS. With 4 bits you can generate numbers between 0-15
-        // The number is random, because you are implementing the left shift feedback register method.
+        // The arguement for the method .random is BITS. With 4 bits you can generate random numbers between 0-15
         int result = random(BITS);
         
         // cout << result << endl;
@@ -45,11 +42,13 @@ void UniGenerator::getRandomNumbers()
         counters[result]++;
     }
     
+    // For loop outputs the number of times that a random value between 0-15 has been generated
     for (int i = 0; i < RANGE; i++)
     {
         cout << "[" << i << "] = " << counters[i] << endl;
     }
     
+    // The chiResult method is called, in order to determing the validity of the random number that has been generated
     bool chiResult = chiSquare(counters, TOTAL_COUNT, RANGE);
     
     cout << "Chi Square Test: " << (chiResult ? "Passed" : "Failed") << endl;
