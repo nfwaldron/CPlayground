@@ -17,10 +17,11 @@ class UniGenerator : public Generator
 {
 public:
     UniGenerator(); // Constructor
-    void getRandomNumbers();//
-    void setParamenters(int bits, int totalCount);
-
-private:
+    
+    // Function generates random numbers using the .random method in the parent class
+    // Pre: None
+    // Post: None
+    void getRandomNumbers();
 };
 
 #endif /* defined(__RandomNumberGenerator__UniGenerator__) */
