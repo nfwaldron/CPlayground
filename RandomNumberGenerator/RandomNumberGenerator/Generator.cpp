@@ -1,7 +1,5 @@
-//
 //  Generator.cpp
 //  RandomNumberGenerator
-//
 //  Created by Admin on 2/27/15.
 //  Copyright (c) 2015 Admin. All rights reserved.
 //
@@ -20,8 +18,13 @@ Generator::Generator()
     cout << "sequence = " << hex << sequence << dec << endl;
 }
 
+<<<<<<< Updated upstream
     // This random number generator takes an integer as an arguement. Using a mask to tap the 1st and 4th bits,
     // we use the left shift feedback register method to generate random numbers.
+=======
+// This random number generator takes an integer as an arguement. Using a mask to tap the 1st and 4th bits,
+// we use the left shift feedback register method to generate random numbers.
+>>>>>>> Stashed changes
     
 unsigned long int Generator::random(int bitCount)
 {
@@ -47,11 +50,11 @@ unsigned long int Generator::random(int bitCount)
 }
     
     
-    /* The Chi Square test examines a sequence of supposedly random numbers to determine if they are in fact random.
-     * If I was to  generate 10,000 numbers in the 0-63 range. Then N = 10,000 and r = 64. You will then compute χ2 by the
-     * formula χ2 = sum of the (observed values - expected values)^2 / expected values. If χ2 is within the range of
-     * r ± Square root of (2r), the distribution is indeed random.
-     */
+/* The Chi Square test examines a sequence of supposedly random numbers to determine if they are in fact random.
+* If I was to  generate 10,000 numbers in the 0-63 range. Then N = 10,000 and r = 64. You will then compute χ2 by the
+* formula χ2 = sum of the (observed values - expected values)^2 / expected values. If χ2 is within the range of
+* r ± Square root of (2r), the distribution is indeed random.
+*/
 bool Generator::chiSquare(int a [], int N, int R)
 {
         

@@ -8,11 +8,14 @@
 
 #include <iostream>
 #include "Generator.h"
+#include "ExpoGenerator.h"
+#include "UniGenerator.h"
 
 using namespace std;
 
 int main()
 {
+<<<<<<< Updated upstream
     const int BITS = 4; // Number of bits
     const int RANGE = 16; // Number of elements in the array
     const int TOTAL_COUNT = 10000; // Total number of random numbers to be generated
@@ -45,6 +48,13 @@ int main()
     bool chiResult = generator.chiSquare(counters, TOTAL_COUNT, RANGE);
     
     cout << "Chi Square Test: " << (chiResult ? "Passed" : "Failed") << endl;
+=======
+  //  UniGenerator tempGen;
+  //tempGen.getRandomNumbers();
+//
+  ExpoGenerator expoGen;
+   expoGen.setParameters(4, 3);
+>>>>>>> Stashed changes
     
     return 0;
 }

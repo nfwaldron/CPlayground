@@ -12,9 +12,13 @@
 class Generator
 {
 public:
-    Generator(); //Constructor
+    Generator(); // Constructor
     unsigned long int random(int bitCount); // Random number generator
     bool chiSquare(int a [], int N, int R); // Chi Square test implementation
+    
+    // Virtual function modifiable for uniform generator class, and exponential generator class
+    //virtual float random () = 0;
+  
     
 private:
     unsigned long int sequence;
