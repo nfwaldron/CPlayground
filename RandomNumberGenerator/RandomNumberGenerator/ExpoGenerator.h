@@ -1,35 +1,22 @@
-//
-//  ExpoGenerator.h
-//  RandomNumberGenerator
-//
-//  Created by Admin on 3/2/15.
-//  Copyright (c) 2015 Admin. All rights reserved.
-//
+#ifndef EXPONENTIALGENERATOR_H
+#define EXPONENTIALGENERATOR_H
 
-#ifndef __RandomNumberGenerator__ExpoGenerator__
-#define __RandomNumberGenerator__ExpoGenerator__
-#include <stdio.h>
 #include "Generator.h"
+#include <cmath>
 
-class ExpoGenerator : public Generator
-{
+class ExpoGenerator:public Generator{
 public:
     ExpoGenerator();
-    // set the parameters
-    void setParameters( int bits, int lambda);
-    float exponentialFunction();
-    void exponentialNumberGenerator();
+    ExpoGenerator(double);
+    
+    double getLambda();
+    void setLambda(double);
+    double ExpRandom(int);
+    double ExpectedMean();
     
 private:
-    float myLambda;
-    int myBits;
-    float myT;
-    int myRange;
-    unsigned long int myRandomNumber;
-    const double myE = 2.718;
-    double myResult;
-    
+    double lambda;
+    const double e = 2.71828;
 };
 
-
-#endif /* defined(__RandomNumberGenerator__ExpoGenerator__) */
+#endif
