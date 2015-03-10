@@ -1,25 +1,32 @@
-#include "ExpoGenerator.h"
+#include "ExponentialGenerator.h"
 
-ExpoGenerator::ExpoGenerator(){
-    lambda = 0.0;
+ExponentialGenerator::ExponentialGenerator(){
+	myLambda = 0.0;
 }
-ExpoGenerator::ExpoGenerator(double lambda){
-    this->lambda = lambda;
+ExponentialGenerator::ExponentialGenerator(double lambda){
+	myLambda = lambda;
 }
 
-void ExpoGenerator::setLambda(double lambda){
-    this->lambda = lambda;
+void ExponentialGenerator::setLambda(double lambda){
+	myLambda = lambda;
 }
-double ExpoGenerator::getLambda(){
-    return lambda;
+double ExponentialGenerator::getLambda(){
+	return myLambda;
 }
-double ExpoGenerator::ExpRandom(int bits){
-    double base = pow(2,bits) - 1;
-    unsigned long int temp = random(bits);
-    double lam = getLambda();
-    double temp2 = (double)temp / base;
-    return (lam*pow(e, -lam*temp2));
+double ExponentialGenerator::ExpRandom(int bits){
+	double base = pow(2,bits);
+	unsigned long int temp = random(bits);
+	double lam = getLambda();
+	double temp2 = (double)temp / base;
+	myT = temp2;
+	return (lam*pow(2.71828, -lam*temp2));
 }
-double ExpoGenerator::ExpectedMean(){
-    return 1 / getLambda();
+
+double ExponentialGenerator::getmyT()
+{
+	return myT;
+}
+
+double ExponentialGenerator::ExpectedMean(){
+	return 1 / getLambda();
 }
