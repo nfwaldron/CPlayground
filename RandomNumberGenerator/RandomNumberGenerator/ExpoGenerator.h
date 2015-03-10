@@ -1,22 +1,24 @@
 #ifndef EXPONENTIALGENERATOR_H
 #define EXPONENTIALGENERATOR_H
 
-#include "Generator.h"
+#include "RandomGenerator.h"
 #include <cmath>
 
-class ExpoGenerator:public Generator{
+class ExponentialGenerator:public RandomGenerator{
 public:
-    ExpoGenerator();
-    ExpoGenerator(double);
-    
-    double getLambda();
-    void setLambda(double);
-    double ExpRandom(int);
-    double ExpectedMean();
-    
+	ExponentialGenerator();
+	ExponentialGenerator(double);
+
+	double getLambda();
+	void setLambda(double);
+	double ExpRandom(int);
+	double ExpectedMean();
+	double getmyT();
+
 private:
-    double lambda;
-    const double e = 2.71828;
+	double myLambda;
+	double myT;
+	//const double e = 2.71828;
 };
 
 #endif
