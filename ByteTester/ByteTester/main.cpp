@@ -1,6 +1,6 @@
 // Nathan Waldron
 // CPSC 501
-// 2/13/2015
+// 3/5/2015
 // Assignment 1: Byte Tester
 
 #include <iostream>
