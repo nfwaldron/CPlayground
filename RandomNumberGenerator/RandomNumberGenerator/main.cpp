@@ -6,55 +6,93 @@
 //  Copyright (c) 2015 Admin. All rights reserved.
 //
 
-#include <iostream>
-#include "Generator.h"
-#include "ExpoGenerator.h"
-#include "UniGenerator.h"
+#include "UniformGenerator.h"
+#include "ExponentialGenerator.h"
+#include <fstream>
 
-using namespace std;
+void main(){
+	const int BITS = 4;
+	const int RANGE = 16;
+	const int TOTAL_COUNT = 10000;
 
-int main()
-{
-<<<<<<< Updated upstream
-    const int BITS = 4; // Number of bits
-    const int RANGE = 16; // Number of elements in the array
-    const int TOTAL_COUNT = 10000; // Total number of random numbers to be generated
-    Generator generator;
-    
-    // Set the value of all elements in the array to '0'.
-    int counters[RANGE] = { 0 };
-    
-    for (int i = 0; i < TOTAL_COUNT; i++)
-    {
-        // The .random method creates random numbers using the left shift feedback register method.
-        // The random number that is generated is stored in the variable "result".
-        // The arguement for the method .random is BITS. With 4 bits you can generate numbers between 0-15
-        // The number is random, because you are implementing the left shift feedback register method.
-        int result = generator.random(BITS);
-        
-        // cout << result << endl;
-        
-        // The random number generated is between 0-15. counters[result]++ counts the number of times a value between 0-15 is
-        // generated, and stores that number in the corresponding index of the array. For example, if a '1' is generated, the
-        // index [1] will have a value of '1'. If it's generated again, the value of index [1] will be '2'.
-        counters[result]++;
-    }
-    
-    for (int i = 0; i < RANGE; i++)
-    {
-        cout << "[" << i << "] = " << counters[i] << endl;
-    }
-    
-    bool chiResult = generator.chiSquare(counters, TOTAL_COUNT, RANGE);
-    
-    cout << "Chi Square Test: " << (chiResult ? "Passed" : "Failed") << endl;
-=======
-  //  UniGenerator tempGen;
-  //tempGen.getRandomNumbers();
-//
-  ExpoGenerator expoGen;
-   expoGen.setParameters(4, 3);
->>>>>>> Stashed changes
-    
-    return 0;
+	RandomGenerator randomGen;
+
+	cout << "Running Uniform Generator" << endl;
+	UniformGenerator uni_test;
+	int counters_uni[RANGE] = { 0 };
+	int randNumStor_uni[TOTAL_COUNT] = { 0 };
+	int counters_exp[RANGE] = { 0 };
+
+	for (int i = 0; i < TOTAL_COUNT; i++){
+		int result = uni_test.random(BITS);
+		counters_uni[result]++;
+		randNumStor_uni[i] = result;
+	}
+	
+	for (int i = 0; i < RANGE; i++)
+	{
+		cout << "[" << i << "] = " << counters_uni[i] << endl;
+	}
+
+	bool chiResult = uni_test.chiSquare(counters_uni, TOTAL_COUNT, RANGE);
+	cout << "Chi Square Test: " <<
+		(chiResult ? "Passed! UniformGenerator.csv saved!" : "Failed! No value saved!") << endl << endl;
+
+	if (chiResult){
+		ofstream out;
+		out.open("UniformGenerator.csv", ios::trunc);
+		for (int i = 0; i < TOTAL_COUNT; i++){
+			out << randNumStor_uni[i] << endl;
+		}
+		out.close();
+	}
+
+	cout << "Running Exponential Generator" << endl;
+	ExponentialGenerator Exp_test(10);
+
+	double randNumStor_exp[TOTAL_COUNT];
+	double expSum = 0.0;
+
+
+	for (int i = 0; i < TOTAL_COUNT; i++){
+		double result = Exp_test.ExpRandom(BITS);
+		randNumStor_exp[i] = result;
+		expSum += result;
+	}
+
+	cout << "The expected mean of Exponential Generator: " << expSum / TOTAL_COUNT << endl << endl;
+	
+	if (1){
+		ofstream out("ExponentialGenerator.csv", ios::trunc);
+		for (int i = 0; i < TOTAL_COUNT; i++){
+			out << randNumStor_exp[i] << endl;
+		}
+		out.close();
+	}
+
+/*	
+	for (int i = 0; i < TOTAL_COUNT; i++){
+		int result = uni_test.random(BITS);
+		counters_exp[result]++;
+		//randNumStor_exp[i] = result;
+	}
+
+	for (int i = 0; i < RANGE; i++)
+	{
+		float value = (i*1.0)/ (RANGE-1);
+		cout << "[" << value << "] = " << counters_exp[i] << endl;
+	}
+	
+	
+	cout << "Density Function" << endl;
+	cout << " t                F(t)" << endl;
+
+	double tempLambda = Exp_test.getLambda();
+	double tempMyT = Exp_test.getmyT();
+	for (int i = 0; i < RANGE; i++){
+		float val = ((i)*1.0) / (RANGE - 1);
+		cout <<  val <<" will be  "  << tempLambda*pow(2.718,(tempLambda)*-1*tempMyT)<< endl;
+	}
+*/
+
 }
