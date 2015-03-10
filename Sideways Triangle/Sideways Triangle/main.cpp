@@ -19,9 +19,12 @@ using namespace std;
 
 int main(int argc, const char * argv[])
 {
-    // Initialize the loop variable row. "row" = 1
+    // Initialize the loop variable row. "row" = 1. While row is less than or equal to 5
+    // execute the statement within the for loop and then increment the value of row
     for (int row = 1; row <= 5; row++)
     {
+        // While hash is less than or equal to row, exexute the statement inside the for loop
+        // and 
         for (int hash = 1; hash <= row; hash++)
         {
             cout << "#";
