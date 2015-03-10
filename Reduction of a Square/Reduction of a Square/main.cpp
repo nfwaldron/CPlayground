@@ -5,7 +5,6 @@
 //  triangle.
 //  Created by Nathan Waldron on 3/10/15.
 //  Copyright (c) 2015 Admin. All rights reserved.
-//
 
 #include <iostream>
 using namespace std;
@@ -14,9 +13,13 @@ using namespace std;
 int main(int argc, const char * argv[])
 {
 
+    // Two for loops will create a repeating code, which will essentially create a 5x5 table
     for (int row = 1; row <= 5; row++)
     {
-        for (int HASH_NUMBER = 1; HASH_NUMBER <= 5; HASH_NUMBER++)
+        // In order to decrease the number of hashes output, while the number of rows
+        // increases, subtract the number variable HASH_NUMBER by the variable row
+        
+        for (int HASH_NUMBER = 0; HASH_NUMBER <= 5 - row; HASH_NUMBER++)
         {
             cout << "#";
         }
